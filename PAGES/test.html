@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Supabase Test</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <input id="r_name" placeholder="Full name">
+  <input id="r_email" placeholder="Email">
+  <input id="r_enroll" placeholder="Enrollment number">
+  <input id="r_pass" type="password" placeholder="Password (min 6)">
+  <input id="r_batch" placeholder="Batch">
+  <input id="r_year" placeholder="Graduation year">
+  <button onclick="register()">Register</button>
+
+  <h2>Login</h2>
+  <input id="l_email" placeholder="Email">
+  <input id="l_pass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <button onclick="logout()">Logout</button>
+
+  <h2>Actions</h2>
+  <button onclick="showMyProfile()">Show my profile</button>
+  <button onclick="showDirectory()">Show directory</button>
+
+  <pre id="output"></pre>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="../js/config.js"></script>
+  <script>
+    const out = (x) => document.getElementById("output").textContent =
+      typeof x === "string" ? x : JSON.stringify(x, null, 2);
+    const val = (id) => document.getElementById(id).value;
+
+ function validateEmail(email) {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!pattern.test(email)) return "Please enter a valid email address.";
+  const typos = {
+    "gmial.com": "gmail.com", "gmai.com": "gmail.com", "gamil.com": "gmail.com",
+    "gmail.con": "gmail.com", "gmail.co": "gmail.com", "hotmial.com": "hotmail.com",
+    "yaho.com": "yahoo.com", "yahooo.com": "yahoo.com", "outlok.com": "outlook.com"
+  };
+  const parts = email.split("@");
+  const fix = typos[parts[1].toLowerCase()];
+  if (fix) return "Did you mean " + parts[0] + "@" + fix + "?";
+  return null;
+}
+
+async function register() {
+  const email = val("r_email").trim();
+  const problem = validateEmail(email);
+  if (problem) return out(problem);
+  
+
+  const { error } = await db.auth.signUp({
+    email: email,
+    password: val("r_pass"),
+    options: { data: {
+      full_name: val("r_name"),
+      enrollment_no: val("r_enroll"),
+      batch: val("r_batch"),
+      graduation_year: val("r_year")
+    }}
+  });
+  out(error ? error.message : "Registered. Check your email and click the confirmation link, then log in.");
+}
+
+    async function login() {
+      const { error } = await db.auth.signInWithPassword({
+        email: val("l_email"), password: val("l_pass")
+      });
+      out(error ? error.message : "Logged in.");
+    }
+
+    async function logout() {
+      await db.auth.signOut();
+      out("Logged out.");
+    }
+
+   async function showMyProfile() {
+  const { data: { user } } = await db.auth.getUser();
+  if (!user) return out("Not logged in.");
+  const { data, error } = await db
+    .from("profiles")
+    .select("id, full_name, batch, graduation_year, job_title, company, skills, bio, linkedin, github, profile_picture, role, is_verified, created_at")
+    .eq("id", user.id)
+    .single();
+  out(error ? error.message : data);
+}
+
+    async function showDirectory() {
+      const { data, error } = await db.from("profiles").select("full_name, batch, graduation_year, is_verified");
+      out(error ? error.message : data);
+    }
+  </script>
+</body>
+</html>

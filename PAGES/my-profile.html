@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My-Profile</title>
+</head>
+<body>
+    <h1>My Profile</h1>
+<p id="message"></p>
+<img id="avatarImg" width="120" alt="Profile picture">
+<input type="file" id="avatarFile" accept="image/png,image/jpeg,image/webp">
+<button type="button" id="avatarBtn">Upload picture</button>
+<form id="profileForm">
+  <input id="full_name" placeholder="Full name" required>
+  <input id="batch" placeholder="Batch" required>
+  <input id="graduation_year" type="number" min="1950" max="2100" placeholder="Graduation year" required>
+  <input id="job_title" placeholder="Job title">
+  <input id="company" placeholder="Company">
+  <input id="skills" placeholder="Skills (comma separated)">
+  <textarea id="bio" maxlength="1000" placeholder="Short bio"></textarea>
+  <input id="linkedin" placeholder="LinkedIn link">
+  <input id="github" placeholder="GitHub link">
+  <button type="submit">Save</button>
+</form>
+<button onclick="logout()">Logout</button>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/PAGE.js"></script>
+  <script src="../js/my-profile.js"></script>
+</body>
+</html>
