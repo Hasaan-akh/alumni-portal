@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account settings</title>
+</head>
+<body>
+  <nav>
+    <a href="my-profile.html">My profile</a>
+    <button onclick="logout()">Logout</button>
+  </nav>
+
+  <h1>Account settings</h1>
+  <p>Current email: <strong id="currentEmail"></strong></p>
+  <p id="message"></p>
+
+  <h2>Change email</h2>
+  <form id="emailForm">
+    <input id="new_email" type="email" placeholder="New email" required>
+    <input id="current_password" type="password" placeholder="Current password" required>
+    <button type="submit" id="sendBtn">Send code to new email</button>
+  </form>
+
+  <form id="codeForm" hidden>
+    <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Code from the new email" required>
+    <button type="submit" id="confirmBtn">Confirm new email</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/account.js"></script>
+</body>
+</html>

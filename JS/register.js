@@ -79,6 +79,6 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   if (data.session) {
     location.href = "pending.html";   // logged in straight away
   } else {
-    showMessage("Account created. Check your email to confirm it, then log in.");
+    location.href = "verify-email.html?email=" + encodeURIComponent(val("email"));
   }
 });

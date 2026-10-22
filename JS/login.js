@@ -25,8 +25,10 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   if (error) {
     btn.disabled = false;
     const msg = error.message.toLowerCase();
+
     if (msg.includes("email not confirmed")) {
-      return showMessage("Please confirm your email first. Check your inbox.");
+      location.href = "verify-email.html?email=" + encodeURIComponent(email);
+      return;
     }
     if (msg.includes("rate limit") || msg.includes("too many")) {
       return showMessage("Too many attempts. Please wait a few minutes and try again.");
