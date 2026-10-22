@@ -1,21 +1,36 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Direvtory</title>
+  <title>Alumni Directory</title>
 </head>
 <body>
-  <!-- page content here -->
-   
+  <nav>
+    <a href="my-profile.html">My profile</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="admin.html" id="adminLink" hidden>Admin</a>
+    <button onclick="logout()">Logout</button>
+  </nav>
 
+  <h1>Alumni Directory</h1>
 
+  <form id="filterForm">
+    <input id="f_name" placeholder="Name">
+    <input id="f_batch" placeholder="Batch">
+    <input id="f_year" type="number" placeholder="Graduation year">
+    <input id="f_work" placeholder="Company, job title or skill">
+    <button type="submit">Search</button>
+    <button type="button" id="clearBtn">Clear</button>
+  </form>
+
+  <p id="status"></p>
+  <div id="results"></div>
+  <button id="moreBtn" hidden>Load more</button>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="../js/config.js"></script>
   <script src="../js/auth.js"></script>
-  <script src="../js/PAGE.js"></script>
   <script src="../js/directory.js"></script>
 </body>
 </html>
