@@ -1,31 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create account</title>
+  <title>Create Account | DCS UBIT Alumni Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/auth-base.css">
+  <link rel="stylesheet" href="../CSS/register.css">
 </head>
-<body>
-  <h1>Create account</h1>
-  <p id="message"></p>
+<body class="auth-page reg-page">
 
-  <form id="registerForm">
-    <input id="full_name" placeholder="Full name" required>
-    <input id="email" type="email" placeholder="Email" required>
-    <input id="password" type="password" placeholder="Password (min 8 characters)" required>
-    <input id="confirm_password" type="password" placeholder="Confirm password" required>
-    <input id="batch" placeholder="Batch" required>
-    <input id="graduation_year" type="number" placeholder="Graduation year" required>
-    <input id="enrollment_no" placeholder="Enrollment number" required>
-    <button type="submit" id="submitBtn">Create account</button>
-  </form>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/logo.png" alt="DCS UBIT logo">
+      <span class="brand-text">
+        <span class="brand-dept">Department of Computer Science</span>
+        <span class="brand-uni">University of Karachi</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>
+        Home
+      </a>
+    </nav>
+  </header>
 
-  <p>Already have an account? <a href="login.html">Login</a></p>
-  <a href="../index.html">Home</a>
+  <!-- ================= MAIN ================= -->
+  <main class="auth-main">
 
+    <!-- decorative layers -->
+    <div class="reg-photo-top" aria-hidden="true"></div>
+    <div class="reg-photo-bottom" aria-hidden="true"></div>
+    <div class="reg-photo-tint" aria-hidden="true"></div>
+    <div class="reg-glow" aria-hidden="true"></div>
+
+    <svg class="reg-ribbon" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="rrib" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#8a1230"/>
+          <stop offset=".45" stop-color="#5a0c20"/>
+          <stop offset="1" stop-color="#2a0610" stop-opacity=".3"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 130 C 260 150 480 250 800 262 C 1100 272 1300 230 1440 190 L1440 300 L0 300Z" fill="url(#rrib)" opacity=".85"/>
+      <path d="M0 130 C 260 150 480 250 800 262 C 1100 272 1300 230 1440 190" fill="none" stroke="#d6ad65" stroke-width="2.5" stroke-opacity=".8"/>
+    </svg>
+
+    <!-- ===== LEFT INTRO ===== -->
+    <section class="reg-intro">
+      <span class="reg-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M2.5 19c0-3.4 2.9-5.5 6.5-5.5s6.5 2.1 6.5 5.5zM15.5 14.2c3 .1 6 1.5 6 4.8h-4.6c0-1.9-.6-3.5-1.4-4.8z"/></svg>
+        Join Our Alumni Community
+      </span>
+
+      <h1 class="reg-title">Create Your <em>Alumni Account</em></h1>
+      <p class="reg-lead">Be part of the DCS UBIT alumni network and unlock new opportunities.</p>
+
+      <ul class="reg-features">
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 19c0-3.2 2.7-5 6-5s6 1.8 6 5M15.5 14.3c3-.2 5.5 1.2 5.5 4.2"/></svg></span>
+          <span><span class="feat-title">Connect with Alumni</span><span class="feat-desc">Build your professional network.</span></span>
+        </li>
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg></span>
+          <span><span class="feat-title">Explore Opportunities</span><span class="feat-desc">Discover jobs and career resources.</span></span>
+        </li>
+        <li>
+          <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h2M12 14h2M16 14h.01M8 17.5h2M12 17.5h2"/></svg></span>
+          <span><span class="feat-title">Stay Updated</span><span class="feat-desc">Get the latest events and news.</span></span>
+        </li>
+      </ul>
+
+      <p class="reg-slogan">Together We Build a Stronger UBIT</p>
+    </section>
+
+    <!-- ===== REGISTRATION CARD ===== -->
+    <section class="reg-card-wrap">
+      <div class="auth-card">
+        <img class="auth-card-logo" src="../assets/logo.png" alt="DCS UBIT logo">
+        <h2>Create Account</h2>
+        <p class="sub">Fill in your details to get started</p>
+
+        <p id="message" role="alert"></p>
+
+        <!-- IDs below are used by register.js — do not rename -->
+        <form id="registerForm">
+          <div class="form-grid">
+
+            <div class="field full">
+              <label for="full_name">Full Name <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+                <input id="full_name" placeholder="Enter your full name" autocomplete="name" required>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <input id="email" type="email" placeholder="Enter your email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="batch">Batch <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>
+                <input id="batch" placeholder="Enter your batch" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="graduation_year">Graduation Year <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+                <input id="graduation_year" type="number" placeholder="e.g. 2024" inputmode="numeric" required>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="enrollment_no">Enrollment Number <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.5-1.5 1.7-2.2 3-2.2s2.5.7 3 2.2M14 10h4M14 13.5h3"/></svg>
+                <input id="enrollment_no" placeholder="Enter your enrollment number" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="password">Password <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+                <input id="password" type="password" placeholder="Min. 8 characters" autocomplete="new-password" required>
+                <button type="button" class="toggle-pw" data-target="password" aria-label="Show password">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path class="slash" d="M4 4l16 16"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="confirm_password">Confirm Password <span class="req">*</span></label>
+              <div class="control">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+                <input id="confirm_password" type="password" placeholder="Re-enter password" autocomplete="new-password" required>
+                <button type="button" class="toggle-pw" data-target="confirm_password" aria-label="Show password">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path class="slash" d="M4 4l16 16"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-primary">
+            Create Account
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Sign In</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Existing scripts, same order as before -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="../js/config.js"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/register.js"></script>
+
+  <!-- Show/hide password (UI only) -->
+  <script>
+    document.querySelectorAll(".toggle-pw").forEach(function (btn) {
+      var input = document.getElementById(btn.dataset.target);
+      var slash = btn.querySelector(".slash");
+      slash.style.display = "none";
+      btn.addEventListener("click", function () {
+        var show = input.type === "password";
+        input.type = show ? "text" : "password";
+        slash.style.display = show ? "" : "none";
+        btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+      });
+    });
+  </script>
 </body>
 </html>

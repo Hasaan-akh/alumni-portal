@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Verification Pending | DCS UBIT Alumni Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/auth-base.css">
+  <link rel="stylesheet" href="../CSS/auth-simple.css">
 </head>
-<body>
-  <!-- page content here -->
-   <h1>Your account is waiting for verification</h1>
-<p>An admin will review your account. You can complete your profile in the meantime.</p>
-<a href="my-profile.html">Edit my profile</a>
-<button onclick="logout()">Logout</button>
+<body class="auth-page simple-page photo-night">
+
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/logo.png" alt="DCS UBIT logo">
+      <span class="brand-text">
+        <span class="brand-dept">Department of Computer Science</span>
+        <span class="brand-uni">University of Karachi</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>
+        Home
+      </a>
+    </nav>
+  </header>
+
+  <main class="auth-main">
+    <div class="simple-photo" aria-hidden="true"></div>
+    <div class="simple-glow" aria-hidden="true"></div>
+    <svg class="simple-ribbon" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="sr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a1230"/><stop offset=".5" stop-color="#4a0b1d"/><stop offset="1" stop-color="#2a0610" stop-opacity=".3"/></linearGradient></defs>
+      <path d="M0 140 C 260 160 520 250 820 262 C 1100 272 1300 230 1440 190 L1440 300 L0 300Z" fill="url(#sr)" opacity=".85"/>
+      <path d="M0 140 C 260 160 520 250 820 262 C 1100 272 1300 230 1440 190" fill="none" stroke="#d6ad65" stroke-width="2.5" stroke-opacity=".8"/>
+    </svg>
+
+    <div class="auth-card">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 21h12M7 3c0 5 3 6 5 9-2 3-5 4-5 9M17 3c0 5-3 6-5 9 2 3 5 4 5 9"/></svg></div>
+      <h2>Your Account Is Waiting for Verification</h2>
+      <p class="sub">An admin will review your account. You can complete your profile in the meantime.</p>
+
+      <ul class="status-steps">
+        <li><span class="dot done"></span> Account created</li>
+        <li><span class="dot"></span> Waiting for admin review</li>
+      </ul>
+
+      <a class="btn-primary" href="my-profile.html" style="text-decoration:none">Edit My Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button type="button" class="btn-secondary" onclick="logout()">Logout</button>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="../js/config.js"></script>

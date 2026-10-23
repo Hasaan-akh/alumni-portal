@@ -1,23 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confirm your email</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Confirm Your Email | DCS UBIT Alumni Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/auth-base.css">
+  <link rel="stylesheet" href="../CSS/auth-simple.css">
 </head>
-<body>
-  <h1>Confirm your email</h1>
-  <p>We sent a code to your email. Enter it below. Check your spam folder if you can't find it.</p>
-  <p id="message"></p>
+<body class="auth-page simple-page photo-dusk">
 
-  <form id="verifyForm">
-    <input id="email" type="email" placeholder="Email" required>
-    <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Code from email" required>
-    <button type="submit" id="submitBtn">Confirm</button>
-  </form>
-  <button type="button" id="resendBtn">Resend code</button>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/logo.png" alt="DCS UBIT logo">
+      <span class="brand-text">
+        <span class="brand-dept">Department of Computer Science</span>
+        <span class="brand-uni">University of Karachi</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>
+        Home
+      </a>
+    </nav>
+  </header>
 
-  <p><a href="login.html">Back to login</a></p>
+  <main class="auth-main">
+    <div class="simple-photo" aria-hidden="true"></div>
+    <div class="simple-glow" aria-hidden="true"></div>
+    <svg class="simple-ribbon" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="sr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a1230"/><stop offset=".5" stop-color="#4a0b1d"/><stop offset="1" stop-color="#2a0610" stop-opacity=".3"/></linearGradient></defs>
+      <path d="M0 140 C 260 160 520 250 820 262 C 1100 272 1300 230 1440 190 L1440 300 L0 300Z" fill="url(#sr)" opacity=".85"/>
+      <path d="M0 140 C 260 160 520 250 820 262 C 1100 272 1300 230 1440 190" fill="none" stroke="#d6ad65" stroke-width="2.5" stroke-opacity=".8"/>
+    </svg>
+
+    <div class="auth-card">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+      <h2>Confirm Your Email</h2>
+      <p class="sub">We sent a code to your email. Enter it below. Check your spam folder if you can&rsquo;t find it.</p>
+
+      <p id="message" role="alert"></p>
+
+      <!-- IDs below are used by verify-email.js — do not rename -->
+      <form id="verifyForm">
+        <div class="field">
+          <label for="email">Email Address</label>
+          <div class="control">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <input id="email" type="email" placeholder="Enter your email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="code">Verification Code</label>
+          <input id="code" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Enter the code" required>
+        </div>
+        <button type="submit" id="submitBtn" class="btn-primary">Confirm <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+
+      <button type="button" id="resendBtn" class="btn-secondary">Resend code</button>
+
+      <a class="back-link" href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Back to Login</a>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="../js/config.js"></script>

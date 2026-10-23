@@ -1,0 +1,213 @@
+/* =========================================================
+   register.css  —  create-account page only (needs auth-base.css first)
+   ========================================================= */
+
+.reg-page .auth-main {
+  position: relative;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+  min-height: calc(100vh - var(--header-h));
+  padding: 36px clamp(20px, 4.5vw, 64px) 56px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-primary);
+}
+
+/* ----- Campus photography (same photo as login) ----- */
+.reg-photo-top {
+  position: absolute;
+  top: 0; right: 0;
+  width: 62%; height: 46%;
+  z-index: -3;
+  background-color: #2a1119;
+  background-image:
+    url("../assets/campus-night.jpg"),
+    linear-gradient(180deg, #7a2a3a, #1a0d14);
+  background-size: cover;
+  background-position: center 60%;
+  opacity: .7;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 45%, transparent 100%),
+    linear-gradient(to left, #000 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 45%, transparent 100%),
+    linear-gradient(to left, #000 55%, transparent 100%);
+  mask-composite: intersect;
+}
+.reg-photo-bottom {                     /* darkened, burgundy-tinted */
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 52%; height: 34%;
+  z-index: -3;
+  background-color: #1a0d14;
+  background-image: url("../assets/campus-dusk.jpg");
+  background-size: cover;
+  background-position: center 70%;
+  filter: grayscale(1) contrast(1.1) brightness(.75);
+  -webkit-mask-image:
+    linear-gradient(to top, #000 40%, transparent 100%),
+    linear-gradient(to right, #000 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to top, #000 40%, transparent 100%),
+    linear-gradient(to right, #000 55%, transparent 100%);
+  mask-composite: intersect;
+}
+.reg-photo-tint {                       /* crimson wash over the bottom photo */
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 52%; height: 34%;
+  z-index: -2;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(114, 13, 41, .35), rgba(181, 22, 61, .55));
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 45%, transparent 100%);
+}
+.reg-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 45% at 100% 8%, rgba(181, 22, 61, .40), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 0% 100%, rgba(114, 13, 41, .55), transparent 70%);
+}
+.reg-ribbon {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 26%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ----- Left intro ----- */
+.reg-intro { position: relative; padding-bottom: 60px; }
+
+.reg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(161, 21, 58, .85), rgba(114, 13, 41, .85));
+  border: 1px solid rgba(255, 120, 150, .3);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.reg-badge svg { width: 18px; height: 18px; }
+
+.reg-title {
+  margin: 0 0 14px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.12;
+  color: var(--text-primary);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, .7);
+}
+.reg-title em { display: block; font-style: normal; color: var(--accent-gold); }
+
+.reg-lead {
+  max-width: 400px;
+  margin: 0 0 32px;
+  font-size: clamp(15px, 1.3vw, 18px);
+  color: var(--text-primary);
+}
+
+.reg-features { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.reg-features li { display: flex; align-items: center; gap: 18px; }
+.feat-icon {
+  flex: none;
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #a3153a, #5a0c20);
+  border: 1px solid rgba(214, 173, 101, .55);
+  box-shadow: 0 6px 18px rgba(114, 13, 41, .5);
+  color: var(--text-primary);
+}
+.feat-icon svg { width: 26px; height: 26px; }
+.feat-title { display: block; font-size: 17px; font-weight: 500; color: var(--text-primary); }
+.feat-desc  { display: block; font-size: 14px; color: var(--text-secondary); }
+
+.reg-slogan {
+  position: absolute;
+  left: 0; bottom: 0;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--accent-gold);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .8);
+}
+
+/* ----- Card ----- */
+.reg-card-wrap { display: flex; justify-content: flex-end; }
+.reg-page .auth-card { max-width: 600px; }
+.reg-page .auth-card-logo { width: 84px; height: 84px; margin-bottom: 8px; }
+.reg-page .auth-card .sub { margin-bottom: 18px; }
+
+.reg-page .field { margin-bottom: 14px; }
+.reg-page .field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.reg-page .field label .req { color: var(--accent-red); }
+.control { position: relative; }
+.control > .icon {
+  position: absolute;
+  left: 15px; top: 50%;
+  width: 19px; height: 19px;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+.reg-page .field input { height: 46px; font-size: 14.5px; padding-left: 44px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+.form-grid .full { grid-column: 1 / -1; }
+
+.reg-page .btn-primary { margin-top: 8px; height: 50px; }
+.reg-page .auth-switch { margin-top: 18px; }
+
+/* ----- Tablet ----- */
+@media (max-width: 1024px) {
+  .reg-page .auth-main { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }
+  .reg-lead { max-width: 300px; }
+  .reg-slogan { display: none; }
+}
+
+/* ----- Mobile: form first, intro below ----- */
+@media (max-width: 820px) {
+  .reg-page .auth-main {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 20px 16px 40px;
+  }
+  .reg-card-wrap { order: -1; justify-content: center; }
+  .reg-page .auth-card { max-width: 560px; }
+  .reg-intro { padding-bottom: 0; text-align: center; }
+  .reg-lead { margin-left: auto; margin-right: auto; }
+  .reg-features { justify-content: center; text-align: left; max-width: 340px; margin: 0 auto; }
+  .reg-photo-top { width: 100%; height: 260px; opacity: .45; }
+  .reg-photo-bottom, .reg-photo-tint, .reg-ribbon { display: none; }
+}
+@media (max-width: 820px) {
+  .reg-page .field input { font-size: 16px; }
+}
+@media (max-width: 560px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .auth-card { padding: 22px 16px; }
+}
