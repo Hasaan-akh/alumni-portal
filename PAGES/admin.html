@@ -1,33 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin</title>
+  <meta name="theme-color" content="#070910">
+  <title>Admin Dashboard | DCS UBIT Alumni Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/auth-base.css">
+  <link rel="stylesheet" href="../CSS/admin.css">
 </head>
-<body>
-  <nav>
-    <a href="directory.html">Directory</a>
-    <a href="jobs.html">Jobs</a>
-    <button onclick="logout()">Logout</button>
-  </nav>
+<body class="auth-page admin-page">
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/logo.PNG" alt="DCS UBIT logo">
+      <span class="brand-text">
+        <span class="brand-dept">Department of Computer Science</span>
+        <span class="brand-uni">University of Karachi</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Admin navigation">
+      <a href="directory.html">Directory</a>
+      <a href="jobs.html">Jobs</a>
+      <button class="admin-logout" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
 
-  <h1>Admin</h1>
+  <main class="admin-main">
+    <div class="admin-backdrop" aria-hidden="true"></div>
+    <div class="admin-content">
+      <section class="admin-intro" aria-labelledby="adminHeading">
+        <p class="admin-eyebrow">DCS UBIT Alumni Portal</p>
+        <h1 id="adminHeading">Admin Dashboard</h1>
+        <p>Review membership requests, manage reports, and oversee the alumni community.</p>
+      </section>
 
-  <details open>
-    <summary id="pendingTitle">Pending users</summary>
-    <div id="pendingList">Loading...</div>
-  </details>
+      <section class="admin-panels" aria-label="Admin management">
+        <details class="admin-panel" open>
+          <summary id="pendingTitle">Pending users</summary>
+          <div class="admin-panel-content" id="pendingList" aria-live="polite">Loading...</div>
+        </details>
 
-  <details open>
-    <summary id="reportTitle">Reports</summary>
-    <div id="reportList">Loading...</div>
-  </details>
+        <details class="admin-panel" open>
+          <summary id="reportTitle">Reports</summary>
+          <div class="admin-panel-content" id="reportList" aria-live="polite">Loading...</div>
+        </details>
 
-  <details>
-    <summary id="usersTitle">All users</summary>
-    <div id="userList">Loading...</div>
-  </details>
+        <details class="admin-panel admin-panel-wide">
+          <summary id="usersTitle">All users</summary>
+          <div class="admin-panel-content" id="userList" aria-live="polite">Loading...</div>
+        </details>
+      </section>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="../js/config.js"></script>

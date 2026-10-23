@@ -1,0 +1,140 @@
+:root {
+  --pending-bg-1: #070910;
+  --pending-bg-2: #0b0e17;
+  --pending-card-1: rgba(13, 17, 27, 0.96);
+  --pending-card-2: rgba(17, 22, 33, 0.92);
+  --pending-rose: #a3153a;
+  --pending-rose-deep: #720d29;
+  --pending-gold: #d6ad65;
+  --pending-gold-soft: #e7c788;
+  --pending-glass: rgba(255, 255, 255, 0.05);
+  --pending-ring: rgba(214, 173, 101, 0.34);
+}
+
+.pending-page {
+  background: radial-gradient(circle at top, rgba(163, 21, 58, 0.24), transparent 35%),
+              linear-gradient(180deg, var(--pending-bg-1) 0%, var(--pending-bg-2) 100%);
+}
+
+.pending-page .auth-main {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(214, 173, 101, 0.14), transparent 18%),
+    radial-gradient(circle at 90% 12%, rgba(163, 21, 58, 0.22), transparent 22%),
+    linear-gradient(180deg, rgba(7, 9, 16, 0.96) 0%, rgba(9, 11, 17, 1) 100%);
+}
+
+.pending-page .simple-photo {
+  background:
+    linear-gradient(180deg, rgba(20, 11, 18, 0.25), rgba(5, 7, 12, 0.12)),
+    radial-gradient(circle at 28% 24%, rgba(214, 173, 101, 0.38), transparent 12%),
+    radial-gradient(circle at 68% 38%, rgba(163, 21, 58, 0.46), transparent 18%),
+    radial-gradient(circle at 52% 72%, rgba(111, 12, 28, 0.78), transparent 26%),
+    linear-gradient(135deg, rgba(31, 13, 20, 0.96) 0%, rgba(13, 17, 24, 0.96) 40%, rgba(6, 9, 15, 1) 100%);
+  opacity: 0.78;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.pending-page .simple-photo::before,
+.pending-page .simple-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 18% 14%;
+  width: 72%;
+  height: 52%;
+  border: 1px solid rgba(214, 173, 101, 0.25);
+  border-radius: 50%;
+  filter: blur(0.2px);
+  transform: rotate(-10deg);
+  opacity: 0.8;
+}
+
+.pending-page .simple-photo::after {
+  inset: 12% 16% auto auto;
+  width: 28%;
+  height: 28%;
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: rotate(18deg);
+}
+
+.pending-page .simple-ribbon {
+  opacity: 0.9;
+}
+
+.pending-page .auth-card {
+  max-width: 500px;
+  background: linear-gradient(180deg, var(--pending-card-1) 0%, var(--pending-card-2) 100%);
+  border-color: rgba(214, 173, 101, 0.2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.68), 0 0 0 1px rgba(114, 13, 41, 0.2), 0 0 60px rgba(114, 13, 41, 0.16);
+}
+
+.pending-page .card-icon {
+  width: 84px;
+  height: 84px;
+  background: radial-gradient(circle at 35% 30%, #bf2a58 0%, #7b1631 38%, #470d1c 100%);
+  border-color: rgba(214, 173, 101, 0.68);
+  box-shadow: 0 12px 30px rgba(114, 13, 41, 0.38), 0 0 0 8px rgba(214, 173, 101, 0.06);
+}
+
+.pending-page .card-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.pending-page .auth-card h2 {
+  letter-spacing: 0.01em;
+}
+
+.pending-page .auth-card .sub {
+  max-width: 390px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pending-page .status-steps {
+  margin-bottom: 26px;
+}
+
+.pending-page .status-steps li {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(214, 173, 101, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.pending-page .status-steps .dot {
+  background: linear-gradient(180deg, var(--pending-gold-soft), var(--pending-gold));
+  box-shadow: 0 0 0 4px rgba(214, 173, 101, 0.14);
+}
+
+.pending-page .status-steps .dot.done {
+  background: linear-gradient(180deg, #7fe2ad, #3bbd7a);
+  box-shadow: 0 0 0 4px rgba(59, 189, 122, 0.17);
+}
+
+.pending-page .btn-primary {
+  margin-top: 6px;
+  background: linear-gradient(180deg, #b92a49 0%, #7f1230 100%);
+  box-shadow: 0 14px 28px rgba(127, 18, 48, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.17);
+}
+
+.pending-page .btn-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(214, 173, 101, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.pending-page .btn-secondary:hover {
+  border-color: rgba(214, 173, 101, 0.62);
+  background: rgba(214, 173, 101, 0.065);
+  color: var(--accent-gold);
+}
+
+@media (max-width: 540px) {
+  .pending-page .auth-card {
+    padding: 24px 18px 22px;
+  }
+
+  .pending-page .status-steps li {
+    padding: 11px 12px;
+  }
+}
