@@ -1,0 +1,309 @@
+:root {
+  color-scheme: dark;
+  --bg: #070910;
+  --text: #f7f3ee;
+  --text-soft: #c2c8d3;
+  --gold: #d6ad65;
+  --gold-soft: #b99355;
+  --burgundy: #720d29;
+  --crimson: #b5163d;
+  --border-gold: rgba(214, 173, 101, .25);
+  --border-input: rgba(255, 255, 255, .14);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 24px clamp(16px, 5vw, 72px) 56px;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+body::before {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 9, 16, .55), rgba(7, 9, 16, .78) 62%, #070910 100%),
+    url("../assets/campus-sunset-wide.jpg") center 44% / cover no-repeat;
+  content: "";
+}
+
+body::after {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 12% 10%, rgba(181, 22, 61, .22), transparent 42%),
+    radial-gradient(ellipse at 90% 25%, rgba(214, 173, 101, .13), transparent 36%);
+  content: "";
+  pointer-events: none;
+}
+
+nav {
+  display: flex;
+  width: min(100%, 1120px);
+  min-height: 54px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 auto clamp(38px, 8vh, 76px);
+  padding: 6px 9px;
+  border: 1px solid var(--border-gold);
+  border-radius: 999px;
+  background: rgba(7, 9, 16, .68);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .05);
+  backdrop-filter: blur(16px);
+}
+
+nav a,
+nav button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+nav button {
+  border-color: rgba(181, 22, 61, .48);
+  background: rgba(114, 13, 41, .36);
+}
+
+nav a:hover,
+nav button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(214, 173, 101, .58);
+  background: rgba(214, 173, 101, .1);
+  color: var(--gold);
+}
+
+.settings-card {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: clamp(26px, 5vw, 44px);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(12, 17, 29, .94), rgba(9, 11, 19, .91));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .45), inset 0 1px rgba(255, 255, 255, .06);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 6vw, 42px);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.current-email {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(214, 173, 101, .16);
+  border-radius: 10px;
+  background: rgba(214, 173, 101, .055);
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.current-email strong {
+  color: #f0d39d;
+  font-weight: 600;
+}
+
+#message {
+  min-height: 0;
+  margin: 12px 0 0;
+  padding: 0;
+  color: #f0d39d;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#message:not(:empty) {
+  padding: 11px 13px;
+  border: 1px solid var(--border-gold);
+  border-radius: 9px;
+  background: rgba(214, 173, 101, .08);
+}
+
+section {
+  margin-top: 27px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, .09);
+}
+
+h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.section-description {
+  margin: 7px 0 20px;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+form {
+  display: grid;
+  gap: 9px;
+}
+
+form + form {
+  margin-top: 22px;
+  padding-top: 21px;
+  border-top: 1px solid rgba(255, 255, 255, .09);
+}
+
+label {
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--border-input);
+  border-radius: 9px;
+  outline: none;
+  background: rgba(16, 24, 39, .82);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+input::placeholder {
+  color: #8993a3;
+}
+
+input:focus {
+  border-color: var(--gold);
+  background: rgba(16, 24, 39, .98);
+  box-shadow: 0 0 0 3px rgba(214, 173, 101, .16);
+}
+
+form button {
+  min-height: 49px;
+  margin-top: 9px;
+  padding: 0 18px;
+  border: 1px solid rgba(214, 173, 101, .64);
+  border-radius: 9px;
+  background: linear-gradient(135deg, #8d1737, #5a0c20);
+  color: #fff8ed;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(73, 7, 27, .34);
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+  box-shadow: 0 11px 26px rgba(73, 7, 27, .43);
+}
+
+form button:disabled {
+  opacity: .62;
+  cursor: wait;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 14px 15px 36px;
+  }
+
+  nav {
+    min-height: 50px;
+    margin-bottom: 36px;
+  }
+
+  .settings-card {
+    padding: 27px 21px;
+    border-radius: 16px;
+  }
+
+  section {
+    margin-top: 23px;
+    padding-top: 21px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

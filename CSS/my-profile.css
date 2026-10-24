@@ -1,0 +1,706 @@
+/* ==========================================================
+   my-profile.css  -  styles for PAGES/my-profile.html only
+   Same look as the landing page: dark night sky, amber light.
+   Works with the existing HTML and JS without changes.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap");
+
+:root {
+  --bg: #070812;
+  --panel: rgba(14, 16, 32, 0.74);
+  --text: #fff6e4;
+  --muted: #d9c9ae;
+  --soft: #a89c88;
+  --accent: #e8a53c;
+  --peach: #f4c27a;
+  --line: rgba(244, 194, 122, 0.22);
+  --line-strong: rgba(244, 194, 122, 0.6);
+  --danger: #ff9d8a;
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+  background: transparent;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Living background: slow photo drift + drifting glows ---------- */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -4%;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(7, 8, 18, 0.6) 0%, rgba(7, 8, 18, 0.86) 100%),
+    url("../assets/building.png") center bottom / cover no-repeat;
+  animation: bg-drift 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 36% at 14% 12%, rgba(232, 165, 60, 0.16), transparent 70%),
+    radial-gradient(ellipse 36% 40% at 88% 78%, rgba(150, 70, 190, 0.16), transparent 70%);
+  animation: glow-shift 14s ease-in-out infinite alternate;
+}
+
+@keyframes bg-drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to   { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+}
+
+@keyframes glow-shift {
+  from { opacity: 0.6; transform: translate3d(0, 0, 0); }
+  to   { opacity: 1; transform: translate3d(2%, -2%, 0); }
+}
+
+/* ---------- Shared entrance animation ---------- */
+
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes drop {
+  from { opacity: 0; transform: translate3d(0, -14px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translate3d(-28px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ---------- Top navigation ---------- */
+
+.profile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.9rem;
+  padding: 1.4rem clamp(1.25rem, 4.5vw, 4.5rem);
+  animation: drop 0.7s var(--ease) both;
+}
+
+.profile-nav a,
+.profile-nav button {
+  position: relative;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font: 500 0.74rem/1 var(--sans);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
+}
+
+.profile-nav a:hover,
+.profile-nav button:hover {
+  border-color: var(--line-strong);
+  background: rgba(232, 165, 60, 0.14);
+  color: var(--peach);
+  transform: translateY(-2px);
+}
+
+.profile-nav a:active,
+.profile-nav button:active {
+  transform: translateY(0);
+}
+
+/* ---------- Page layout ---------- */
+
+.profile-shell {
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  padding: 0.5rem clamp(1.25rem, 4.5vw, 3rem) 4rem;
+}
+
+.profile-heading {
+  margin-bottom: 2.2rem;
+}
+
+.profile-heading > * {
+  animation: rise 0.8s var(--ease) both;
+}
+
+.eyebrow {
+  margin: 0 0 0.9rem;
+  color: var(--peach);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  animation-delay: 0.1s;
+}
+
+.profile-heading h1 {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.1rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  animation-delay: 0.2s;
+}
+
+/* Amber rule that draws itself under the title */
+.profile-heading h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.4rem;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: draw-rule 0.9s 0.7s var(--ease) both;
+}
+
+@keyframes draw-rule {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.intro {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  animation-delay: 0.32s;
+}
+
+/* ---------- Main card ---------- */
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 19rem minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(1.4rem, 3vw, 2.6rem);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: rise 0.9s 0.35s var(--ease) both;
+}
+
+/* ---------- Avatar panel ---------- */
+
+.avatar-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding-right: clamp(1.2rem, 2.6vw, 2.6rem);
+  border-right: 1px solid var(--line);
+  animation: slide-in-left 0.9s 0.55s var(--ease) both;
+}
+
+.avatar-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 11.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.5s var(--ease);
+}
+
+/* Slowly turning light ring around the portrait */
+.avatar-frame::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 55%, var(--accent) 80%, var(--peach) 92%, transparent 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: ring-spin 7s linear infinite;
+}
+
+/* Soft breathing halo */
+.avatar-frame::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 165, 60, 0.22), transparent 68%);
+  z-index: -1;
+  animation: halo 4.5s ease-in-out infinite;
+}
+
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes halo {
+  0%, 100% { opacity: 0.5; transform: scale(0.96); }
+  50%      { opacity: 1; transform: scale(1.06); }
+}
+
+.avatar-frame:hover {
+  transform: scale(1.04);
+}
+
+.avatar-frame img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  animation: photo-in 0.8s var(--ease) both;
+}
+
+.avatar-frame img[hidden] {
+  display: none;
+}
+
+/* Hide the "Your portrait" placeholder once a photo is shown */
+.avatar-frame img:not([hidden]) ~ .avatar-empty {
+  display: none;
+}
+
+@keyframes photo-in {
+  from { opacity: 0; transform: scale(0.88); filter: blur(8px); }
+  to   { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+.avatar-empty {
+  color: var(--soft);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.avatar-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.8rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* The real file input is hidden visually but stays usable by keyboard */
+#avatarFile {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-picker,
+#avatarBtn {
+  display: block;
+  width: 100%;
+  padding: 0.95rem 1.2rem;
+  border-radius: 0.7rem;
+  font: 500 0.76rem/1 var(--sans);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.file-picker {
+  border: 1px dashed var(--line-strong);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--peach);
+}
+
+.file-picker:hover {
+  background: rgba(232, 165, 60, 0.12);
+  transform: translateY(-2px);
+}
+
+#avatarFile:focus-visible + .file-picker,
+.avatar-controls:focus-within .file-picker {
+  outline: 2px solid var(--peach);
+  outline-offset: 3px;
+}
+
+#avatarBtn {
+  border: 1px solid var(--line-strong);
+  background: rgba(232, 165, 60, 0.16);
+  color: var(--text);
+}
+
+#avatarBtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a1206;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(232, 165, 60, 0.28);
+}
+
+#avatarBtn:active,
+.file-picker:active {
+  transform: translateY(0) scale(0.98);
+}
+
+#avatarBtn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+  transform: none;
+  box-shadow: none;
+}
+
+.photo-note {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Form ---------- */
+
+.form-content {
+  min-width: 0;
+}
+
+.form-heading {
+  margin-bottom: 1.4rem;
+  animation: rise 0.8s 0.6s var(--ease) both;
+}
+
+.form-heading h2 {
+  margin: 0 0 0.3rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+.form-heading p {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.9rem;
+}
+
+.form-heading span,
+.form-field label span {
+  color: var(--accent);
+}
+
+/* Status message: slides in when the script writes text into it */
+#message {
+  margin: 0 0 1.3rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0.6rem;
+  background: rgba(232, 165, 60, 0.1);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+#message:empty {
+  display: none;
+}
+
+#message:not(:empty) {
+  animation: message-in 0.55s var(--ease) both;
+}
+
+@keyframes message-in {
+  from { opacity: 0; transform: translate3d(0, -10px, 0) scale(0.98); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+#profileForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3rem 1.4rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  animation: rise 0.7s var(--ease) both;
+}
+
+.form-field-wide {
+  grid-column: 1 / -1;
+}
+
+/* Fields appear one after another */
+#profileForm > :nth-child(1)  { animation-delay: 0.70s; }
+#profileForm > :nth-child(2)  { animation-delay: 0.77s; }
+#profileForm > :nth-child(3)  { animation-delay: 0.84s; }
+#profileForm > :nth-child(4)  { animation-delay: 0.91s; }
+#profileForm > :nth-child(5)  { animation-delay: 0.98s; }
+#profileForm > :nth-child(6)  { animation-delay: 1.05s; }
+#profileForm > :nth-child(7)  { animation-delay: 1.12s; }
+#profileForm > :nth-child(8)  { animation-delay: 1.19s; }
+#profileForm > :nth-child(9)  { animation-delay: 1.26s; }
+#profileForm > :nth-child(10) { animation-delay: 1.33s; }
+
+.form-field label {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.form-field:focus-within label {
+  color: var(--peach);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font: 400 1rem/1.4 var(--sans);
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease, transform 0.3s var(--ease);
+}
+
+.form-field textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(217, 201, 174, 0.42);
+}
+
+.form-field input:hover,
+.form-field textarea:hover {
+  border-color: rgba(244, 194, 122, 0.4);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(232, 165, 60, 0.07);
+  box-shadow: 0 0 0 4px rgba(232, 165, 60, 0.16), 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Highlight only after the person has typed something wrong */
+.form-field input:user-invalid,
+.form-field textarea:user-invalid {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 4px rgba(255, 157, 138, 0.14);
+}
+
+/* Remove the number spinner, keep the typing */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Stop the browser's white autofill background */
+.form-field input:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px #15172b inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ---------- Save button ---------- */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.6rem;
+}
+
+.form-actions button {
+  position: relative;
+  overflow: hidden;
+  min-width: 12rem;
+  padding: 1.1rem 2.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #f0b45a, #e8a53c 55%, #cf8a22);
+  color: #1a1206;
+  font: 600 0.8rem/1 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(232, 165, 60, 0.25);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Light sweep across the button on hover */
+.form-actions button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+}
+
+.form-actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(232, 165, 60, 0.38);
+  filter: brightness(1.05);
+}
+
+.form-actions button:hover::after {
+  left: 130%;
+  transition: left 0.8s ease;
+}
+
+.form-actions button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Keyboard focus ---------- */
+
+.profile-nav a:focus-visible,
+.profile-nav button:focus-visible,
+.form-actions button:focus-visible,
+#avatarBtn:focus-visible {
+  outline: 2px solid var(--peach);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.8rem 2.4rem;
+    padding: 0 0 1.8rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    animation-name: rise;
+  }
+
+  .avatar-controls {
+    width: min(100%, 17rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-nav {
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
+
+  .profile-nav a,
+  .profile-nav button {
+    padding: 0.7rem 1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .profile-heading {
+    margin-bottom: 1.6rem;
+  }
+
+  .profile-card {
+    border-radius: 1.1rem;
+  }
+
+  .avatar-frame {
+    width: 9.5rem;
+  }
+
+  #profileForm {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  /* 16px inputs stop iPhones zooming in on focus */
+  .form-field input,
+  .form-field textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-nav a,
+  .profile-nav button {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.62rem;
+  }
+}
+
+/* ---------- Reduced motion: keep everything visible, stop the movement ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

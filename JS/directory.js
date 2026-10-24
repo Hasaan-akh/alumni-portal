@@ -1,5 +1,6 @@
 const PAGE_SIZE = 20;
 let page = 0;
+let me = null;
 
 const val = (id) => document.getElementById(id).value.trim();
 
@@ -55,6 +56,8 @@ async function loadProfiles(reset) {
     .order("full_name", { ascending: true })
     .range(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE - 1);
 
+  if (me.role !== "admin") query = query.neq("role", "admin");
+
   const name = clean(val("f_name"));
   const batch = clean(val("f_batch"));
   const year = Number(val("f_year"));
@@ -81,7 +84,7 @@ async function loadProfiles(reset) {
 }
 
 async function init() {
-  const me = await requireAccess("verified");
+  me = await requireAccess("verified");
   if (!me) return;
 
   if (me.role === "admin") document.getElementById("adminLink").hidden = false;

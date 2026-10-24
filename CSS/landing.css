@@ -1,0 +1,546 @@
+/* ==========================================================
+   landing.css  -  styles for index.html only
+   Standalone: does not need auth-base.css or home.css
+   ========================================================== */
+
+:root {
+  --bg: #070812;
+  --text: #fff6e4;
+  --muted: #ecdcc0;
+  --accent: #e8a53c;
+  --peach: #f4c27a;
+  --line: rgba(244, 194, 122, 0.65);
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --pad-x: clamp(1.25rem, 4.5vw, 4.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--peach);
+  outline-offset: 4px;
+}
+
+/* ---------- Header ---------- */
+
+.lp-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem var(--pad-x);
+}
+
+.lp-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lp-brand-logo {
+  height: 3.4rem;
+  width: auto;
+  display: block;
+}
+
+.lp-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lp-brand-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.lp-brand-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lp-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+}
+
+.lp-nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.lp-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.lp-nav-link:hover,
+.lp-nav-link.is-active {
+  color: var(--peach);
+}
+
+.lp-nav-link:hover::after,
+.lp-nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.lp-login {
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--line);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.lp-login:hover {
+  background: rgba(232, 165, 60, 0.22);
+  border-color: var(--peach);
+}
+
+/* ---------- Hero background layers ---------- */
+
+.lp-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.lp-photo {
+  position: absolute;
+  inset: 0;
+  background: #0b0c1a url("../assets/building.png") center center / cover no-repeat;
+}
+
+.lp-dots {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 17rem;
+  height: 17rem;
+  background-image: radial-gradient(circle, rgba(244, 194, 122, 0.6) 1.2px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(45deg, #000 0%, transparent 85%);
+  mask-image: linear-gradient(45deg, #000 0%, transparent 85%);
+  opacity: 0.7;
+}
+
+.lp-lines {
+  position: absolute;
+  left: 8%;
+  bottom: 0;
+  width: 22rem;
+  height: 22rem;
+  color: rgba(232, 165, 60, 0.5);
+}
+
+/* ---------- Hero content ---------- */
+
+.lp-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 62rem;
+  padding: 8rem var(--pad-x) 7rem;
+}
+
+.lp-kicker {
+  margin: 0 0 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+
+.lp-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55), 0 4px 28px rgba(0, 0, 0, 0.75);
+}
+
+.lp-rule {
+  display: block;
+  width: 3.4rem;
+  height: 2px;
+  margin: 2rem 0 1.8rem;
+  background: var(--accent);
+}
+
+.lp-sub {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 2px 16px rgba(0, 0, 0, 0.8);
+  margin: 0 0 2.8rem;
+  max-width: 30rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.lp-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+}
+
+.lp-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lp-btn {
+  display: inline-block;
+  padding: 1.15rem 2rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.lp-btn-main {
+  background: rgba(232, 165, 60, 0.26);
+  border-color: var(--peach);
+}
+
+.lp-btn-main:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a1206;
+}
+
+.lp-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--peach);
+}
+
+/* ---------- Rotating quote ---------- */
+
+.lp-quote {
+  margin: 0;
+  width: min(24rem, 100%);
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--accent);
+  min-height: 4.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.lp-quote blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--text);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.lp-quote blockquote.is-fading {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* ---------- Round badge (right side) ---------- */
+
+.lp-badge {
+  position: absolute;
+  z-index: 4;
+  top: 32%;
+  right: 5.5%;
+  width: 9.5rem;
+  height: 9.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.lp-badge-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: lp-spin 40s linear infinite;
+}
+
+.lp-badge-ring text {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  fill: var(--muted);
+}
+
+.lp-badge-logo {
+  width: 2.6rem;
+  height: auto;
+  opacity: 0.9;
+}
+
+@keyframes lp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Scroll hint ---------- */
+
+.lp-scroll {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 2.2rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lp-mouse {
+  position: relative;
+  width: 1.7rem;
+  height: 2.6rem;
+  border: 1px solid var(--muted);
+  border-radius: 1rem;
+}
+
+.lp-mouse-dot {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  width: 3px;
+  height: 6px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--text);
+  animation: lp-wheel 1.8s ease-in-out infinite;
+}
+
+@keyframes lp-wheel {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(0.9rem); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+.lp-scroll-text {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Laptops and small desktops: hide the round badge so it never touches the text */
+@media (max-width: 1100px) {
+  .lp-badge {
+    display: none;
+  }
+}
+
+/* Tablets and phones: compact header */
+@media (max-width: 900px) {
+  .lp-header {
+    padding-top: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .lp-nav-link {
+    display: none;
+  }
+
+  .lp-brand-logo {
+    height: 2.8rem;
+  }
+
+  .lp-brand-name {
+    font-size: 1rem;
+  }
+
+  .lp-brand-tag {
+    display: none;
+  }
+
+  .lp-lines,
+  .lp-dots {
+    display: none;
+  }
+}
+
+/* Phones and tablets held upright: text first, then the full photo underneath,
+   so the words never sit on top of the bright building */
+@media (max-width: 900px) and (orientation: portrait) {
+  .lp-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .lp-content {
+    order: 1;
+    max-width: 40rem;
+    padding-top: 7rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .lp-photo {
+    order: 2;
+    position: relative;
+    inset: auto;
+    flex: 1 0 auto;
+    width: 100%;
+    min-height: 62vw;
+    background-position: center bottom;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 14%);
+  }
+
+  .lp-scroll {
+    display: none;
+  }
+}
+
+/* Small phones */
+@media (max-width: 520px) {
+  .lp-login {
+    padding: 0.7rem 1rem;
+  }
+
+  .lp-title {
+    font-size: clamp(2.4rem, 11vw, 3.2rem);
+  }
+
+  .lp-kicker {
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+  }
+
+  .lp-btn {
+    padding: 1rem 1.3rem;
+  }
+
+  .lp-row {
+    gap: 1.6rem;
+  }
+}
+
+/* Very narrow phones (320px) */
+@media (max-width: 360px) {
+  .lp-brand-name {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .lp-actions {
+    width: 100%;
+  }
+
+  .lp-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+/* Short screens (small laptops, phones on their side) */
+@media (max-height: 700px) {
+  .lp-scroll {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .lp-content {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Very large screens */
+@media (min-width: 1800px) {
+  .lp-content {
+    max-width: 72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-badge-ring,
+  .lp-mouse-dot {
+    animation: none;
+  }
+
+  .lp-quote blockquote {
+    transition: none;
+  }
+}
+
+/* Text legibility without touching the photo */
+.lp-kicker,
+.lp-quote blockquote,
+.lp-nav-link,
+.lp-brand-name,
+.lp-brand-tag,
+.lp-btn,
+.lp-login {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 2px 14px rgba(0, 0, 0, 0.7);
+}

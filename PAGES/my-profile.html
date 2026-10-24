@@ -3,34 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My-Profile</title>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="../CSS/my-profile.css">
 </head>
 <body>
-    <h1>My Profile</h1>
-    <p><a href="account.html">Account settings (change email)</a></p>
-<p id="message"></p>
-<img id="avatarImg" width="120" alt="Profile picture">
-<input type="file" id="avatarFile" accept="image/png,image/jpeg,image/webp">
-<button type="button" id="avatarBtn">Upload picture</button>
-<form id="profileForm">
-  <input id="full_name" placeholder="Full name" required>
-  <input id="batch" placeholder="Batch" required>
-  <input id="graduation_year" type="number" min="1950" max="2100" placeholder="Graduation year" required>
-  <input id="job_title" placeholder="Job title">
-  <input id="company" placeholder="Company">
-  <input id="skills" placeholder="Skills (comma separated)">
-  <textarea id="bio" maxlength="1000" placeholder="Short bio"></textarea>
-  <input id="linkedin" placeholder="LinkedIn link">
-  <input id="github" placeholder="GitHub link">
-  <button type="submit">Save</button>
-</form>
-<button onclick="logout()">Logout</button>
-  
+  <nav class="profile-nav" aria-label="Main navigation">
+    <a id="directoryLink" href="directory.html">Directory</a>
+    <a id="jobsLink" href="jobs.html">Jobs</a>
+    <a id="backLink" href="directory.html">Back</a>
+    <button type="button" onclick="logout()">Logout</button>
+  </nav>
+
+  <main class="profile-shell">
+    <header class="profile-heading">
+      <p class="eyebrow">Alumni portal · Your space</p>
+      <h1>My Profile</h1>
+      <p class="intro">Keep your story current and make it easier for fellow alumni to connect with you.</p>
+    </header>
+
+    <section class="profile-card" aria-label="Edit your profile">
+      <div class="avatar-panel">
+        <div class="avatar-frame">
+          <img id="avatarImg" alt="Your profile picture" hidden>
+          <span class="avatar-empty" aria-hidden="true">Your<br>portrait</span>
+        </div>
+        <div class="avatar-controls">
+          <label class="file-picker" for="avatarFile">Choose a photo</label>
+          <input type="file" id="avatarFile" accept="image/png,image/jpeg,image/webp">
+          <button type="button" id="avatarBtn">Upload picture</button>
+          <p class="photo-note">JPG, PNG or WebP · up to 2 MB</p>
+        </div>
+      </div>
+
+      <div class="form-content">
+        <div class="form-heading">
+          <h2>Your details</h2>
+          <p>Fields marked with <span aria-hidden="true">*</span> are required.</p>
+        </div>
+        <p id="message" role="status" aria-live="polite"></p>
+        <form id="profileForm">
+          <div class="form-field">
+            <label for="full_name">Full name <span aria-hidden="true">*</span></label>
+            <input id="full_name" autocomplete="name" placeholder="Full name" required>
+          </div>
+          <div class="form-field">
+            <label for="batch">Batch <span aria-hidden="true">*</span></label>
+            <input id="batch" placeholder="e.g. 2020" required>
+          </div>
+          <div class="form-field">
+            <label for="graduation_year">Graduation year <span aria-hidden="true">*</span></label>
+            <input id="graduation_year" type="number" min="1950" max="2100" placeholder="e.g. 2024" required>
+          </div>
+          <div class="form-field">
+            <label for="job_title">Job title</label>
+            <input id="job_title" autocomplete="organization-title" placeholder="Your current role">
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input id="company" autocomplete="organization" placeholder="Where you work">
+          </div>
+          <div class="form-field">
+            <label for="skills">Skills</label>
+            <input id="skills" placeholder="e.g. Design, engineering, research">
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="bio">Short bio</label>
+            <textarea id="bio" maxlength="1000" rows="4" placeholder="A little about your work, interests, or journey..."></textarea>
+          </div>
+          <div class="form-field">
+            <label for="linkedin">LinkedIn link</label>
+            <input id="linkedin" placeholder="https://linkedin.com/in/you">
+          </div>
+          <div class="form-field">
+            <label for="github">GitHub link</label>
+            <input id="github" placeholder="https://github.com/you">
+          </div>
+          <div class="form-actions form-field-wide">
+            <button id="saveProfileBtn" type="submit">Save profile</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/PAGE.js"></script>
-  <script src="../js/my-profile.js"></script>
+  <script src="../JS/config.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script src="../JS/my-profile.js"></script>
 </body>
 </html>

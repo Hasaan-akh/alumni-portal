@@ -4,32 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Account settings</title>
+  <link rel="stylesheet" href="../CSS/change-email.css">
 </head>
 <body>
-  <nav>
+  <nav aria-label="Account navigation">
     <a href="my-profile.html">My profile</a>
     <button onclick="logout()">Logout</button>
   </nav>
 
-  <h1>Account settings</h1>
-  <p>Current email: <strong id="currentEmail"></strong></p>
-  <p id="message"></p>
+  <main class="settings-card">
+    <p class="eyebrow">Your account</p>
+    <h1>Account settings</h1>
+    <p class="current-email">Current email: <strong id="currentEmail"></strong></p>
+    <p id="message" role="status" aria-live="polite"></p>
 
-  <h2>Change email</h2>
-  <form id="emailForm">
-    <input id="new_email" type="email" placeholder="New email" required>
-    <input id="current_password" type="password" placeholder="Current password" required>
-    <button type="submit" id="sendBtn">Send code to new email</button>
-  </form>
+    <section aria-labelledby="changeEmailHeading">
+      <h2 id="changeEmailHeading">Change email</h2>
+      <p class="section-description">Confirm your password and we’ll send a verification code to your new address.</p>
+      <form id="emailForm">
+        <label for="new_email">New email address</label>
+        <input id="new_email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <label for="current_password">Current password</label>
+        <input id="current_password" type="password" autocomplete="current-password" placeholder="Enter your current password" required>
+        <button type="submit" id="sendBtn">Send code to new email</button>
+      </form>
 
-  <form id="codeForm" hidden>
-    <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Code from the new email" required>
-    <button type="submit" id="confirmBtn">Confirm new email</button>
-  </form>
+      <form id="codeForm" hidden>
+        <label for="code">Verification code</label>
+        <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Code from the new email" required>
+        <button type="submit" id="confirmBtn">Confirm new email</button>
+      </form>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/account.js"></script>
+  <script src="../JS/config.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script src="../JS/change-email.js"></script>
 </body>
 </html>

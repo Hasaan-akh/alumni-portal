@@ -1,0 +1,485 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  background: #101013;
+  color: #fff8ec;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 24px clamp(16px, 5vw, 72px) 64px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(152, 76, 55, .19), transparent 38%),
+    radial-gradient(ellipse at 12% 22%, rgba(116, 73, 38, .14), transparent 34%),
+    #101013;
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 15, 17, .16), rgba(10, 15, 18, .48) 68%, #101013 100%),
+    linear-gradient(90deg, rgba(7, 15, 17, .18), rgba(7, 15, 17, .08) 55%, rgba(8, 8, 12, .2)),
+    url("../assets/jobs.jpg") center center / cover no-repeat;
+  content: "";
+  opacity: .82;
+  pointer-events: none;
+}
+
+nav {
+  display: flex;
+  width: min(100%, 1200px);
+  min-height: 58px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 auto clamp(42px, 7vh, 76px);
+  padding: 8px 10px;
+  border: 1px solid rgba(237, 207, 151, .2);
+  border-radius: 999px;
+  background: rgba(14, 14, 19, .72);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .05);
+  backdrop-filter: blur(16px);
+}
+
+nav a,
+nav button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 17px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 248, 236, .84);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+nav a:hover,
+nav button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(232, 187, 112, .34);
+  background: rgba(232, 187, 112, .1);
+  color: #ffe3aa;
+}
+
+nav button {
+  border-color: rgba(225, 154, 126, .27);
+  background: rgba(124, 40, 47, .29);
+  color: #ffe5d5;
+}
+
+h1,
+h2,
+#filterForm,
+#status,
+#jobList,
+#moreBtn,
+#postMessage,
+#postForm,
+#myStatus,
+#myJobs {
+  width: min(100%, 1100px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 38px;
+  color: #fff8ec;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 7vw, 70px);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.05;
+  text-align: center;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, .58);
+}
+
+h2 {
+  margin-top: 54px;
+  margin-bottom: 17px;
+  color: #f1d5a1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+#filterForm,
+#postForm {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+  padding: 16px;
+  border: 1px solid rgba(231, 196, 136, .25);
+  border-radius: 18px;
+  background: rgba(16, 16, 21, .78);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .055);
+  backdrop-filter: blur(18px);
+}
+
+#filterForm input,
+#filterForm select,
+#postForm input,
+#postForm select,
+#postForm textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255, 255, 255, .055);
+  color: #fff8ec;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+#filterForm input::placeholder,
+#postForm input::placeholder,
+#postForm textarea::placeholder {
+  color: rgba(255, 248, 236, .53);
+}
+
+#filterForm select option,
+#postForm select option {
+  background: #19191f;
+  color: #fff8ec;
+}
+
+#filterForm input:focus,
+#filterForm select:focus,
+#postForm input:focus,
+#postForm select:focus,
+#postForm textarea:focus {
+  border-color: rgba(237, 191, 111, .8);
+  background-color: rgba(255, 255, 255, .09);
+  box-shadow: 0 0 0 3px rgba(237, 191, 111, .12);
+}
+
+#filterForm button,
+#postForm button,
+#moreBtn,
+#jobList > div > button,
+#myJobs > div > button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(245, 207, 143, .62);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #e2bd7d, #b77c49);
+  color: #211813;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(135, 82, 42, .18);
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+#filterForm button:hover,
+#postForm button:hover,
+#moreBtn:hover,
+#jobList > div > button:hover,
+#myJobs > div > button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 26px rgba(135, 82, 42, .28);
+}
+
+#filterForm #clearBtn {
+  border-color: rgba(255, 255, 255, .17);
+  background: rgba(255, 255, 255, .07);
+  color: #f8e9d2;
+  box-shadow: none;
+}
+
+#status,
+#postMessage,
+#myStatus {
+  min-height: 22px;
+  margin-top: 12px;
+  margin-bottom: 14px;
+  color: #f1d7ac;
+  font-size: 14px;
+}
+
+#jobList,
+#myJobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  align-items: start;
+  gap: 15px;
+}
+
+#jobList > div {
+  min-width: 0;
+  padding: 23px;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(233, 198, 138, .23);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(36, 33, 35, .91), rgba(16, 17, 22, .94));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .25), inset 0 1px rgba(255, 255, 255, .06);
+  backdrop-filter: blur(14px);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+#jobList > div:hover {
+  transform: translateY(-3px);
+  border-color: rgba(239, 194, 117, .5);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .32), 0 0 28px rgba(203, 148, 81, .07);
+}
+
+#jobList h3 {
+  margin: 0 0 11px;
+  color: #f3d397;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+#jobList p {
+  margin: 9px 0 0;
+  color: rgba(255, 248, 236, .76);
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+#jobList small {
+  display: block;
+  margin-top: 16px;
+  color: rgba(255, 248, 236, .52);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#jobList a {
+  color: #f1cc8c;
+  text-decoration-color: rgba(241, 204, 140, .45);
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+#jobList a:hover {
+  color: #fff0c7;
+}
+
+#jobList > div > button {
+  min-height: 36px;
+  margin: 14px 8px 0 0;
+  padding: 0 13px;
+  border-color: rgba(234, 157, 155, .36);
+  background: rgba(112, 35, 49, .48);
+  color: #ffe7e2;
+  box-shadow: none;
+}
+
+#jobList > div > button:hover {
+  border-color: rgba(255, 180, 177, .7);
+  background: rgba(148, 42, 54, .65);
+}
+
+#moreBtn {
+  display: block;
+  margin-top: 22px;
+}
+
+#moreBtn[hidden],
+nav [hidden] {
+  display: none;
+}
+
+#postMessage:empty,
+#myStatus:empty {
+  min-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#postForm {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#postForm textarea {
+  min-height: 140px;
+  grid-column: 1 / -1;
+  resize: vertical;
+}
+
+#postForm > p {
+  align-self: center;
+  margin: 0;
+  color: rgba(255, 248, 236, .64);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#postForm > button {
+  justify-self: start;
+  min-width: 140px;
+}
+
+#myJobs {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+#myJobs > div {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 16px;
+  border: 1px solid rgba(231, 196, 136, .2);
+  border-radius: 12px;
+  background: rgba(20, 20, 25, .78);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .16);
+}
+
+#myJobs > div > span {
+  flex: 1 1 360px;
+  min-width: 0;
+  color: rgba(255, 248, 236, .82);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+#myJobs > div > button {
+  min-height: 36px;
+  padding: 0 13px;
+}
+
+#myJobs > div > button:last-child {
+  border-color: rgba(234, 157, 155, .38);
+  background: rgba(112, 35, 49, .48);
+  color: #ffe7e2;
+  box-shadow: none;
+}
+
+:focus-visible {
+  outline: 2px solid #f0ca84;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-top: 16px;
+  }
+
+  nav {
+    margin-bottom: 50px;
+  }
+
+  #filterForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #postForm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #postForm textarea {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 12px 15px 42px;
+  }
+
+  nav {
+    min-height: 54px;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 42px;
+    padding: 6px;
+  }
+
+  nav a,
+  nav button {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  #filterForm {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+    padding: 11px;
+  }
+
+  #filterForm button {
+    min-height: 44px;
+  }
+
+  #jobList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #jobList > div {
+    padding: 20px;
+  }
+
+  #myJobs > div {
+    align-items: stretch;
+  }
+
+  #myJobs > div > span {
+    flex-basis: 100%;
+  }
+
+  #myJobs > div > button {
+    flex: 1 1 auto;
+  }
+
+  #postForm > button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

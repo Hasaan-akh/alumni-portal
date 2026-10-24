@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,140 +8,74 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="CSS/auth-base.css">
-  <link rel="stylesheet" href="CSS/home.css">
+  <link rel="stylesheet" href="CSS/landing.css">
 </head>
-<body class="auth-page home-page">
+<body class="landing">
 
-  <header class="site-header">
-    <a class="brand" href="index.html">
-      <img class="brand-logo" src="assets/logo.png" alt="DCS UBIT logo">
-      <span class="brand-text">
-        <span class="brand-dept">Department of Computer Science</span>
-        <span class="brand-uni">University of Karachi</span>
+  <header class="lp-header">
+    <a class="lp-brand" href="index.html">
+      <img class="lp-brand-logo" src="assets/logo.PNG" alt="DCS UBIT logo">
+      <span class="lp-brand-text">
+        <span class="lp-brand-name">Alumni Portal</span>
+        <span class="lp-brand-tag">Stay connected. Stay inspired.</span>
       </span>
     </a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="PAGES/login.html">Login</a>
-      <a href="PAGES/register.html">Create account</a>
+
+    <nav class="lp-nav" aria-label="Main">
+      <a class="lp-nav-link is-active" href="index.html" aria-current="page">Home</a>
+      <a class="lp-nav-link" href="PAGES/directory.html">Directory</a>
+      <a class="lp-nav-link" href="PAGES/jobs.html">Jobs</a>
+      <a class="lp-nav-link" href="PAGES/register.html">Join</a>
+      <a class="lp-login" href="PAGES/login.html">Login</a>
     </nav>
   </header>
 
-  <main class="auth-main">
+  <main class="lp-hero">
 
-    <div class="home-bg" aria-hidden="true">
-      <div class="home-bg-photo"></div>
-    </div>
-    <div class="home-glow" aria-hidden="true"></div>
-    <div class="home-stars" aria-hidden="true"></div>
-
-    <div class="home-code" aria-hidden="true">
-      <span>01001100 01101111 01100111 01101001 01100011</span>
-      <span>function connect(alumni) { return network.grow(alumni); }</span>
-      <span>class UBIT { constructor() { this.home = "Karachi"; } }</span>
-      <span>SELECT * FROM alumni WHERE department = 'Computer Science';</span>
-      <span>while (true) { community.support(); knowledge.share(); }</span>
-      <span>const portal = new AlumniNetwork("DCS-UBIT");</span>
-      <span>01010101 01000010 01001001 01010100 00100000 01000011 01010011</span>
-      <span>graph.addEdge(graduate, mentor); graph.addEdge(mentor, intern);</span>
-      <span>export default { once: "UBITian", always: "UBITian" };</span>
-      <span>def alumni_portal(): return "Department of Computer Science"</span>
-      <span>01001100 01101111 01100111 01101001 01100011</span>
-      <span>function connect(alumni) { return network.grow(alumni); }</span>
-      <span>class UBIT { constructor() { this.home = "Karachi"; } }</span>
-      <span>SELECT * FROM alumni WHERE department = 'Computer Science';</span>
-      <span>while (true) { community.support(); knowledge.share(); }</span>
-      <span>const portal = new AlumniNetwork("DCS-UBIT");</span>
-      <span>01010101 01000010 01001001 01010100 00100000 01000011 01010011</span>
-      <span>graph.addEdge(graduate, mentor); graph.addEdge(mentor, intern);</span>
-      <span>export default { once: "UBITian", always: "UBITian" };</span>
-      <span>def alumni_portal(): return "Department of Computer Science"</span>
-    </div>
-
-    <svg class="home-mesh" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="meshStroke" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d6ad65" stop-opacity=".0"/>
-          <stop offset=".45" stop-color="#d6ad65" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#b5163d" stop-opacity=".15"/>
-        </linearGradient>
-      </defs>
-      <g class="mesh-lines" fill="none" stroke="url(#meshStroke)" stroke-width="1.2">
-        <path d="M80 160 L260 90 L480 210 L720 70 L980 180 L1220 80 L1400 220"/>
-        <path d="M40 420 L220 310 L410 480 L640 300 L890 470 L1140 320 L1380 500"/>
-        <path d="M120 720 L340 560 L560 740 L820 540 L1080 700 L1320 560"/>
-        <path d="M260 90 L220 310 L340 560 M480 210 L410 480 L560 740 M720 70 L640 300 L820 540 M980 180 L890 470 L1080 700"/>
-      </g>
-      <g class="mesh-nodes" fill="#b5163d" stroke="#d6ad65" stroke-width="1">
-        <circle class="n n1" cx="260" cy="90" r="5"/>
-        <circle class="n n2" cx="480" cy="210" r="7"/>
-        <circle class="n n3" cx="720" cy="70" r="4"/>
-        <circle class="n n4" cx="980" cy="180" r="6"/>
-        <circle class="n n5" cx="220" cy="310" r="5"/>
-        <circle class="n n6" cx="640" cy="300" r="8"/>
-        <circle class="n n7" cx="890" cy="470" r="5"/>
-        <circle class="n n8" cx="340" cy="560" r="6"/>
-        <circle class="n n9" cx="820" cy="540" r="7"/>
-        <circle class="n n10" cx="1140" cy="320" r="4"/>
-        <circle class="n n11" cx="1220" cy="80" r="5"/>
-        <circle class="n n12" cx="1080" cy="700" r="6"/>
-      </g>
+    <div class="lp-photo" aria-hidden="true"></div>
+    <div class="lp-dots" aria-hidden="true"></div>
+    <svg class="lp-lines" viewBox="0 0 400 400" aria-hidden="true">
+      <polyline points="0,400 150,200 300,400" fill="none" stroke="currentColor" stroke-width="1"/>
     </svg>
 
-    <svg class="home-curve-tr" viewBox="0 0 400 600" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="hcTR" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#e12d52" stop-opacity=".0"/>
-          <stop offset=".5" stop-color="#b5163d" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#720d29" stop-opacity=".9"/>
-        </linearGradient>
-      </defs>
-      <path d="M400 0 C 300 40 170 120 150 260 C 135 380 260 470 400 520 L400 0Z" fill="url(#hcTR)"/>
-      <path d="M400 4 C 305 44 178 124 158 262 C 142 380 262 468 400 516" fill="none" stroke="#d6ad65" stroke-opacity=".35" stroke-width="1.5"/>
-    </svg>
+    <section class="lp-content">
+      <p class="lp-kicker">One Department.</p>
+      <h1 class="lp-title">A Legacy<br>That Connects.</h1>
+      <span class="lp-rule" aria-hidden="true"></span>
+      <p class="lp-sub">Reuniting minds. Building futures.<br>Strengthening our community.</p>
 
-    <svg class="home-ribbon" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="hrib" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#3a0716"/>
-          <stop offset=".4" stop-color="#8a1230"/>
-          <stop offset=".8" stop-color="#b5163d" stop-opacity=".8"/>
-          <stop offset="1" stop-color="#720d29" stop-opacity=".2"/>
-        </linearGradient>
-      </defs>
-      <path d="M0 150 C 300 190 560 280 900 270 C 1150 262 1320 190 1440 120 L1440 300 L0 300Z" fill="url(#hrib)" opacity=".85"/>
-      <path d="M0 150 C 300 190 560 280 900 270 C 1150 262 1320 190 1440 120" fill="none" stroke="#d6ad65" stroke-width="2.5" stroke-opacity=".85"/>
-    </svg>
-
-    <section class="home-hero">
-      <div class="hero-spacer" aria-hidden="true"></div>
-      <p class="hero-kicker">Department of Computer Science</p>
-      <h1 class="hero-title">Welcome to the<br><em>Alumni Portal</em></h1>
-      <p class="hero-tagline">DCS UBIT <span class="dot">•</span> University of Karachi</p>
-      <p class="hero-text">A home for Computer Science graduates to reconnect, share knowledge, and grow with the UBIT community.</p>
-
-      <p class="hero-slogan"><span>Once a UBITian</span><span>Always a UBITian</span></p>
-    </section>
-
-    <section class="home-card-wrap">
-      <div class="auth-card">
-        <img class="auth-card-logo" src="assets/logo.png" alt="DCS UBIT logo">
-        <h2>Welcome, Alumni</h2>
-        <p class="sub">Computer Science Department &mdash; UBIT</p>
-
-        <blockquote class="home-quote">
-          <p>“The best way to predict the future is to invent it.”</p>
-          <cite>Alan Kay</cite>
-        </blockquote>
-
-        <div class="home-actions">
-          <a class="btn-primary" href="PAGES/register.html">Create account</a>
-          <a class="btn-secondary" href="PAGES/login.html">Login</a>
+      <div class="lp-row">
+        <div class="lp-actions">
+          <a class="lp-btn lp-btn-main" href="PAGES/register.html">Create account</a>
+          <a class="lp-btn lp-btn-ghost" href="PAGES/login.html">Login</a>
         </div>
+
+        <figure class="lp-quote">
+          <blockquote id="quoteText">Once a UBITian, always a UBITian. This portal is how we stay in touch.</blockquote>
+        </figure>
       </div>
     </section>
+
+    <div class="lp-badge" aria-hidden="true">
+      <svg class="lp-badge-ring" viewBox="0 0 200 200">
+        <defs>
+          <path id="badgeCircle" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/>
+        </defs>
+        <text>
+          <textPath href="#badgeCircle" startOffset="0" textLength="470">OUR PAST • YOUR FUTURE • ONCE A UBITIAN •</textPath>
+        </text>
+      </svg>
+      <img class="lp-badge-logo" src="assets/logo.PNG" alt="">
+    </div>
+
+    <div class="lp-scroll" aria-hidden="true">
+      <span class="lp-mouse"><span class="lp-mouse-dot"></span></span>
+      <span class="lp-scroll-text">Scroll to explore</span>
+    </div>
   </main>
+
+  <script src="JS/landing.js" defer></script>
 </body>
 </html>

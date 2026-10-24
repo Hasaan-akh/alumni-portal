@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Profile</title>
+  <link rel="stylesheet" href="../CSS/profile.css">
 </head>
 <body>
   <nav>
@@ -12,20 +13,23 @@
     <button onclick="logout()">Logout</button>
   </nav>
 
-  <img id="avatar" width="120" alt="" hidden>
-  <h1 id="name"></h1>
-  <p id="batchYear"></p>
-  <p id="work"></p>
-  <p id="skills"></p>
-  <p id="bio"></p>
-  <p id="links"></p>
+  <main class="profile-card">
+    <img id="avatar" alt="" hidden>
+    <h1 id="name"></h1>
+    <p id="batchYear"></p>
+    <p id="work"></p>
+    <p id="skills"></p>
+    <p id="bio"></p>
+    <p id="links"></p>
 
-  <button id="reportBtn" hidden>Report this profile</button>
-  <a id="editLink" href="my-profile.html" hidden>Edit my profile</a>
+    <div class="profile-actions">
+      <button id="reportBtn" hidden>Report this profile</button>
+    </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/profile.js"></script>
+  <script src="../JS/config.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script src="../JS/profile.js"></script>
 </body>
 </html>
