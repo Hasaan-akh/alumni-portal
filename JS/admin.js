@@ -36,19 +36,23 @@ async function loadPending() {
     const row = el("div");
     row.appendChild(el("span",
       u.full_name + " | " + u.email + " | Batch " + (u.batch || "-") +
-      " | " + (u.graduation_year || "-") + " | Enrollment " + (u.enrollment_no || "-") + " "));
+      " | " + (u.graduation_year || "-") + " | Enrollment " + (u.enrollment_no || "-") +
+      " | " + (u.email_confirmed ? "Email confirmed" : "Email not confirmed — cannot verify yet") + " "));
 
-    const verify = el("button", "Verify");
-    verify.onclick = async () => {
-      const { error } = await db.rpc("admin_verify_user", { target: u.id });
-      if (error) alert(error.message);
-      refreshAll();
-    };
+    if (u.email_confirmed) {
+      const verify = el("button", "Verify");
+      verify.onclick = async () => {
+        const { error } = await db.rpc("admin_verify_user", { target: u.id });
+        if (error) alert(error.message);
+        refreshAll();
+      };
+      row.appendChild(verify);
+    }
 
     const remove = el("button", "Remove");
     remove.onclick = () => removeUser(u.id, u.full_name);
 
-    row.append(verify, remove);
+    row.appendChild(remove);
     list.appendChild(row);
   });
 }
