@@ -86,59 +86,15 @@ a:focus-visible {
   color: var(--muted);
 }
 
-.lp-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.4vw, 2.4rem);
-}
-
-.lp-nav-link {
-  position: relative;
-  padding: 0.5rem 0;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+.lp-affil {
+  margin: 0;
+  text-align: right;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text);
-  transition: color 0.2s ease;
-}
-
-.lp-nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.2rem;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.lp-nav-link:hover,
-.lp-nav-link.is-active {
-  color: var(--peach);
-}
-
-.lp-nav-link:hover::after,
-.lp-nav-link.is-active::after {
-  transform: scaleX(1);
-}
-
-.lp-login {
-  padding: 0.85rem 1.5rem;
-  border: 1px solid var(--line);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.lp-login:hover {
-  background: rgba(232, 165, 60, 0.22);
-  border-color: var(--peach);
+  color: var(--muted);
+  opacity: 0.85;
 }
 
 /* ---------- Hero background layers ---------- */
@@ -193,9 +149,11 @@ a:focus-visible {
 
 .lp-kicker {
   margin: 0 0 1.2rem;
-  font-size: 1.05rem;
+  max-width: 40rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  letter-spacing: 0.28em;
+  line-height: 1.6;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--peach);
 }
@@ -403,10 +361,6 @@ a:focus-visible {
     padding-bottom: 1rem;
   }
 
-  .lp-nav-link {
-    display: none;
-  }
-
   .lp-brand-logo {
     height: 2.8rem;
   }
@@ -460,10 +414,10 @@ a:focus-visible {
   }
 }
 
-/* Small phones */
-@media (max-width: 520px) {
-  .lp-login {
-    padding: 0.7rem 1rem;
+/* Small phones: the affiliation label would crowd the logo, so hide it */
+@media (max-width: 600px) {
+  .lp-affil {
+    display: none;
   }
 
   .lp-title {
@@ -471,8 +425,8 @@ a:focus-visible {
   }
 
   .lp-kicker {
-    font-size: 0.9rem;
-    letter-spacing: 0.22em;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
   }
 
   .lp-btn {
@@ -537,10 +491,9 @@ a:focus-visible {
 /* Text legibility without touching the photo */
 .lp-kicker,
 .lp-quote blockquote,
-.lp-nav-link,
 .lp-brand-name,
 .lp-brand-tag,
-.lp-btn,
-.lp-login {
+.lp-affil,
+.lp-btn {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 2px 14px rgba(0, 0, 0, 0.7);
 }
