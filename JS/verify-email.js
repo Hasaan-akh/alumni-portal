@@ -51,13 +51,24 @@ document.getElementById("verifyForm").addEventListener("submit", async (e) => {
 
 document.getElementById("resendBtn").addEventListener("click", async () => {
   showMessage("");
+
+  const btn = document.getElementById("resendBtn");
+  if (btn.disabled) return;
+
   const email = val("email");
   if (!email) return showMessage("Please enter your email first.");
 
+  // Lock the button while the request is running so a double click cannot send two codes
+  btn.disabled = true;
   const { error } = await db.auth.resend({ type: "signup", email });
+
   if (error) {
-    return showMessage(rateLimitMessage(error) || "Could not send the code: " + error.message);
+    const limited = rateLimitMessage(error);
+    if (limited) startCooldown(60);   // too many requests: make the person wait
+    else btn.disabled = false;        // any other error: allow another try
+    return showMessage(limited || "Could not send the code: " + error.message);
   }
+
   showMessage("A new code has been sent. Check your inbox and spam folder.");
   startCooldown(60);
 });
