@@ -8,10 +8,24 @@ function formatDate(d) {
   return new Date(d).toLocaleDateString();
 }
 
+async function updateAttention() {
+  const { data, error } = await db.rpc("admin_counts");
+  if (error || !data) return;
+  const total = data.pending + data.reports;
+  document.title = (total ? "(" + total + ") " : "") + "Admin Dashboard | DCS UBIT Alumni Portal";
+  const badge = document.getElementById("attentionBadge");
+  if (badge) {
+    badge.textContent = total
+      ? total + " item(s) need your attention: " + data.pending + " pending, " + data.reports + " open reports"
+      : "Nothing needs your attention";
+  }
+}
+
 function refreshAll() {
   loadPending();
   loadReports();
   loadUsers();
+  updateAttention();
 }
 
 async function removeUser(id, name) {
